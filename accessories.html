@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories Multiverse</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#99cdd8',secondary:'#daebe3', accent: '#fde8d3', highlight: '#f3c3b2', background: '#cfd6c4', emphasis: '#c57166'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="images/fs-favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff;
+        }
+        
+        .liquid-text {
+            background: linear-gradient(90deg, #99cdd8, #c57166, #fde8d3, #f3c3b2);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradient 8s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .portal {
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portal:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(153, 205, 216, 0.2), rgba(197, 113, 102, 0.2));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .portal:hover::before {
+            opacity: 1;
+        }
+        
+        .diamond-cell {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .diamond-cell:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #cfd6c4;
+            transition: .4s;
+            border-radius: 30px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #99cdd8;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+        
+        .custom-radio {
+            display: none;
+        }
+        
+        .radio-label {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            display: inline-block;
+            line-height: 20px;
+        }
+        
+        .radio-label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #cfd6c4;
+            border-radius: 50%;
+            background: #fff;
+        }
+        
+        .custom-radio:checked + .radio-label:after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #99cdd8;
+        }
+        
+        .custom-checkbox {
+            display: none;
+        }
+        
+        .checkbox-label {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            display: inline-block;
+            line-height: 20px;
+        }
+        
+        .checkbox-label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #cfd6c4;
+            border-radius: 4px;
+            background: #fff;
+        }
+        
+        .custom-checkbox:checked + .checkbox-label:after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 8px;
+            height: 14px;
+            border: solid #99cdd8;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .heartbeat {
+            animation: heartbeat 1.5s ease infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.1); }
+            70% { transform: scale(1); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .stardust {
+            position: relative;
+        }
+        
+        .stardust::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px);
+            background-size: 15px 15px;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        .custom-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: #cfd6c4;
+            outline: none;
+        }
+        
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #99cdd8;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .custom-range::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #99cdd8;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: none;
+        }
+        
+        .portal-button {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .portal-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+	.product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .portal-button:hover::before {
+            left: 100%;
+        }
+	.product-card:hover .product-info {
+            opacity: 1;
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+	.product-image-container {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image {
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+	.gradient-bg {
+            background: linear-gradient(135deg, #daebe3, #99cdd8, #fde8d3);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+        }
+        
+        .gradient-bg-alt {
+            background: linear-gradient(135deg, #f3c3b2, #cfd6c4, #c57166);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #c57166, #99cdd8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+	.footer-section {
+	     background: linear-gradient(to right, #daebe3, #fde8d3);
+	}
+    </style>
+</head>
+<body>
+            <!-- Navigation -->
+            <nav class="py-6 fixed top-0 left-0 right-0 z-50 px-8 py-4 flex justify-between items-center">
+                <div class="text-white text-3xl font-['Pacifico']">logo</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-white hover:text-primary transition-colors">Home</a>
+                    <a href="men.html" class="nav-link text-white hover:text-primary transition-colors">Men</a>
+                    <a href="women.html" class="nav-link text-white hover:text-primary transition-colors">Women</a>
+                    <a href="accessories.html" class="nav-link text-white hover:text-primary transition-colors">Accessories</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 flex items-center justify-center text-white">
+                        <i class="ri-search-line ri-xl"></i>
+                    </div>
+                    <div class="w-10 h-10 flex items-center justify-center text-white">
+                        <i class="ri-user-line ri-xl"></i>
+                    </div>
+                    <div class="w-10 h-10 flex items-center justify-center text-white">
+                        <i class="ri-shopping-bag-line ri-xl"></i>
+                    </div>
+                    <div class="md:hidden w-10 h-10 flex items-center justify-center text-white">
+                        <i class="ri-menu-line ri-xl"></i>
+                    </div>
+                </div>
+            </nav>
+
+    <!-- Hero Section -->
+    <section class="w-full h-screen relative overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=luxury%20accessories%20floating%20in%20cosmic%20nebula%20space%20with%20crystalline%20structures%2C%20ethereal%20lighting%2C%20luxury%20jewelry%20and%20accessories%20suspended%20in%20antigravity%2C%20cosmic%20dust%20particles%2C%20dreamy%20atmosphere%2C%20high%20fashion%20accessories%20in%20space%2C%20celestial%20background%20with%20stars%20and%20nebulae%2C%20premium%20quality%2C%20photorealistic&width=1920&height=1080&seq=hero123&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+        
+        <div class="container mx-auto px-6 h-full flex items-center">
+            <div class="w-full max-w-2xl text-white relative z-10 mt-20">
+                <h1 class="satoshi-nova text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    <span class="liquid-text">ACCESSORIES MULTIVERSE</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-xl">Transcend ordinary adornment through our quantum collection where masculine and feminine energies intertwine in perfect harmony.</p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#portals" class="bg-white text-gray-900 px-8 py-3 rounded-button font-medium hover:bg-opacity-90 transition-all portal-button whitespace-nowrap">Explore Portals</a>
+                    <a href="#collection" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-button font-medium hover:bg-white/10 transition-all portal-button whitespace-nowrap">View Collection</a>
+                </div>
+                
+                <div class="absolute bottom-4 left-0 heartbeat">
+                    <div class="flex items-center">
+                        <span class="w-2 h-2 bg-primary rounded-full mr-2"></span>
+                        <span class="text-sm text-white/80">Syncing with your heartbeat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section id="all" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center staggered-appear">Shop By Category</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our curated selection of premium accessories designed to elevate your personal style.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="category-card relative overflow-hidden rounded-lg group">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%20premium%20watches%20displayed%20on%20a%20minimalist%20surface%2C%20with%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=600&height=800&seq=2&orientation=portrait" alt="Watches" class="w-full h-96 object-cover object-top transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="font-Montserrat text-2xl font-bold text-white mb-2">Watches</h3>
+                        <p class="text-white text-sm mb-4">Timeless elegance for every occasion</p>
+                        <a href="#" class="inline-block bg-white text-gray-800 px-4 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">Explore Collection</a>
+                    </div>
+                </div>
+                
+                <div class="category-card relative overflow-hidden rounded-lg group">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%20premium%20jewelry%20collection%20including%20necklaces%2C%20bracelets%2C%20and%20rings%20arranged%20elegantly%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=600&height=800&seq=3&orientation=portrait" alt="Jewelry" class="w-full h-96 object-cover object-top transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="font-Montserrat text-2xl font-bold text-white mb-2">Jewelry</h3>
+                        <p class="text-white text-sm mb-4">Statement pieces that define your style</p>
+                        <a href="#" class="inline-block bg-white text-gray-800 px-4 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">Explore Collection</a>
+                    </div>
+                </div>
+                
+                <div class="category-card relative overflow-hidden rounded-lg group">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%20premium%20bags%20and%20leather%20goods%20displayed%20elegantly%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=600&height=800&seq=4&orientation=portrait" alt="Bags" class="w-full h-96 object-cover object-top transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="font-Montserrat text-2xl font-bold text-white mb-2">Bags</h3>
+                        <p class="text-white text-sm mb-4">Functional luxury for everyday life</p>
+                        <a href="#" class="inline-block bg-white text-gray-800 px-4 py-2 rounded-button font-medium text-sm whitespace-nowrap hover:bg-gray-100 transition">Explore Collection</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
+                <div class="category-card relative overflow-hidden rounded-lg group">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%20premium%20sunglasses%20displayed%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=5&orientation=squarish" alt="Sunglasses" class="w-full h-64 object-cover object-top transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="font-Montserrat text-xl font-bold text-white mb-2">Sunglasses</h3>
+                        <a href="#" class="text-white text-sm underline">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="category-card relative overflow-hidden rounded-lg group">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%20premium%20belts%20displayed%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=6&orientation=squarish" alt="Belts" class="w-full h-64 object-cover object-top transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="font-Montserrat text-xl font-bold text-white mb-2">Belts</h3>
+                        <a href="#" class="text-white text-sm underline">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="category-card relative overflow-hidden rounded-lg group">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%20premium%20scarves%20displayed%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=7&orientation=squarish" alt="Scarves" class="w-full h-64 object-cover object-top transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="font-Montserrat text-xl font-bold text-white mb-2">Scarves</h3>
+                        <a href="#" class="text-white text-sm underline">Shop Now</a>
+                    </div>
+                </div>
+                
+                <div class="category-card relative overflow-hidden rounded-lg group">
+                    <img src="https://readdy.ai/api/search-image?query=luxury%20premium%20tech%20accessories%20including%20phone%20cases%2C%20airpod%20cases%2C%20and%20smartwatch%20bands%20displayed%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=8&orientation=squarish" alt="Tech Accessories" class="w-full h-64 object-cover object-top transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 class="font-Montserrat text-xl font-bold text-white mb-2">Tech Accessories</h3>
+                        <a href="#" class="text-white text-sm underline">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collection -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold mb-2">Featured Collection</h2>
+                    <p class="text-gray-600">Discover our most coveted pieces curated for the season</p>
+                </div>
+                
+                <div class="flex space-x-2 mt-6 md:mt-0 bg-white rounded-full p-1 border">
+                    <button class="px-6 py-2 rounded-full bg-primary text-white font-medium whitespace-nowrap">All</button>
+                    <button class="px-6 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-100 whitespace-nowrap">New Arrivals</button>
+                    <button class="px-6 py-2 rounded-full text-gray-700 font-medium hover:bg-gray-100 whitespace-nowrap">Bestsellers</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="product-image-container h-64">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20minimalist%20watch%20with%20blue%20leather%20strap%20and%20silver%20case%20on%20white%20background%2C%20premium%20timepiece%20with%20elegant%20design%2C%20high-end%20fashion%20accessory%2C%20product%20photography%20with%20soft%20shadows%2C%20detailed%20craftsmanship%2C%20clean%20composition&width=500&height=500&seq=product1&orientation=squarish" alt="Celestial Timekeeper Watch" class="product-image w-full h-full object-cover object-top">
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">Celestial Timekeeper</h3>
+                            <span class="bg-[#daebe3] text-primary text-xs px-2 py-1 rounded-full">New</span>
+                        </div>
+                        
+                        <p class="text-gray-600 text-sm mb-4">Precision crafted unisex watch with sustainable materials</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-xl">$329.00</span>
+                            
+                            <div class="flex space-x-2">
+                                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-eye-line"></i>
+                                </button>
+                                
+                                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 transition-colors">
+                                    <i class="ri-shopping-bag-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="product-image-container h-64">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20minimalist%20gold%20bracelet%20with%20geometric%20design%20on%20light%20background%2C%20premium%20jewelry%20piece%20with%20modern%20aesthetic%2C%20high-end%20fashion%20accessory%2C%20product%20photography%20with%20soft%20shadows%2C%20detailed%20craftsmanship%2C%20clean%20composition&width=500&height=500&seq=product2&orientation=squarish" alt="Harmonic Resonance Bracelet" class="product-image w-full h-full object-cover object-top">
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">Harmonic Resonance</h3>
+                            <span class="bg-[#fde8d3] text-secondary text-xs px-2 py-1 rounded-full">Bestseller</span>
+                        </div>
+                        
+                        <p class="text-gray-600 text-sm mb-4">Adjustable bracelet with customizable charm options</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-xl">$189.00</span>
+                            
+                            <div class="flex space-x-2">
+                                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-eye-line"></i>
+                                </button>
+                                
+                                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 transition-colors">
+                                    <i class="ri-shopping-bag-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="product-image-container h-64">
+                        <img src="https://readdy.ai/api/search-image?query=premium%20designer%20sunglasses%20with%20tortoise%20shell%20frame%20on%20neutral%20background%2C%20luxury%20eyewear%20with%20gold%20accents%2C%20high-end%20fashion%20accessory%2C%20product%20photography%20with%20soft%20shadows%2C%20detailed%20craftsmanship%2C%20clean%20composition&width=500&height=500&seq=product3&orientation=squarish" alt="Quantum Vision Sunglasses" class="product-image w-full h-full object-cover object-top">
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">Quantum Vision</h3>
+                            <span class="bg-[#cfd6c4] text-gray-700 text-xs px-2 py-1 rounded-full">Limited</span>
+                        </div>
+                        
+                        <p class="text-gray-600 text-sm mb-4">Polarized sunglasses with adaptive tinting technology</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-xl">$249.00</span>
+                            
+                            <div class="flex space-x-2">
+                                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-eye-line"></i>
+                                </button>
+                                
+                                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 transition-colors">
+                                    <i class="ri-shopping-bag-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="product-image-container h-64">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20minimalist%20leather%20wallet%20in%20coral%20color%20on%20white%20background%2C%20premium%20accessory%20with%20elegant%20design%2C%20high-end%20fashion%20item%2C%20product%20photography%20with%20soft%20shadows%2C%20detailed%20craftsmanship%2C%20clean%20composition&width=500&height=500&seq=product4&orientation=squarish" alt="Ethereal Essence Wallet" class="product-image w-full h-full object-cover object-top">
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-semibold text-lg">Ethereal Essence</h3>
+                            <span class="bg-[#f3c3b2] text-secondary text-xs px-2 py-1 rounded-full">Eco-friendly</span>
+                        </div>
+                        
+                        <p class="text-gray-600 text-sm mb-4">Compact wallet with RFID protection and modular design</p>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-xl">$149.00</span>
+                            
+                            <div class="flex space-x-2">
+                                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-eye-line"></i>
+                                </button>
+                                
+                                <button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 transition-colors">
+                                    <i class="ri-shopping-bag-line"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-white border border-primary text-primary hover:bg-primary hover:text-white transition-colors px-8 py-3 !rounded-button font-semibold whitespace-nowrap">View All Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Her Collection -->
+    <section id="her" class="py-20 bg-gradient-to-r from-[#daebe3] to-[#99cdd8] bg-opacity-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-Montserrat text-4xl font-bold text-gray-800 mb-4">Her Collection</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Elegant accessories designed for the modern woman, combining sophistication with contemporary style.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20womens%20watch%20with%20a%20slim%20gold%20case%20and%20a%20white%20mother-of-pearl%20dial%2C%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=9&orientation=squarish" alt="Women's Watch" class="w-full h-64 object-cover object-top transition duration-500">
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-line text-gray-700"></i>
+                            </div>
+                        </div>
+                        <div class="product-info absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition duration-300">
+                            <a href="#" class="bg-white text-gray-800 px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition">Quick View</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-Montserrat text-lg font-medium text-gray-800">Celestial Timepiece</h3>
+                        <p class="text-gray-600 text-sm mb-2">Gold-plated stainless steel</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-900">$329.00</span>
+                            <div class="flex gap-1">
+                                <span class="w-4 h-4 rounded-full bg-[#f3c3b2]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#99cdd8]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#cfd6c4]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20womens%20pearl%20necklace%20with%20a%20delicate%20gold%20chain%2C%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=10&orientation=squarish" alt="Pearl Necklace" class="w-full h-64 object-cover object-top transition duration-500">
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-line text-gray-700"></i>
+                            </div>
+                        </div>
+                        <div class="product-info absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition duration-300">
+                            <a href="#" class="bg-white text-gray-800 px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition">Quick View</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-Montserrat text-lg font-medium text-gray-800">Luminous Pearl Necklace</h3>
+                        <p class="text-gray-600 text-sm mb-2">Freshwater pearls, 18k gold</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-900">$245.00</span>
+                            <div class="flex gap-1">
+                                <span class="w-4 h-4 rounded-full bg-[#fde8d3]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#f3c3b2]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20womens%20leather%20handbag%20in%20pastel%20blue%20color%2C%20structured%20design%2C%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=11&orientation=squarish" alt="Leather Handbag" class="w-full h-64 object-cover object-top transition duration-500">
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-line text-gray-700"></i>
+                            </div>
+                        </div>
+                        <div class="product-info absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition duration-300">
+                            <a href="#" class="bg-white text-gray-800 px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition">Quick View</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-Montserrat text-lg font-medium text-gray-800">Azure Leather Tote</h3>
+                        <p class="text-gray-600 text-sm mb-2">Full-grain calfskin leather</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-900">$495.00</span>
+                            <div class="flex gap-1">
+                                <span class="w-4 h-4 rounded-full bg-[#99cdd8]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#c57166]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#cfd6c4]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20womens%20cat-eye%20sunglasses%20with%20gold%20accents%2C%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=12&orientation=squarish" alt="Cat-Eye Sunglasses" class="w-full h-64 object-cover object-top transition duration-500">
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-line text-gray-700"></i>
+                            </div>
+                        </div>
+                        <div class="product-info absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition duration-300">
+                            <a href="#" class="bg-white text-gray-800 px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition">Quick View</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-Montserrat text-lg font-medium text-gray-800">Feline Cat-Eye Sunglasses</h3>
+                        <p class="text-gray-600 text-sm mb-2">Acetate frame, UV protection</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-900">$189.00</span>
+                            <div class="flex gap-1">
+                                <span class="w-4 h-4 rounded-full bg-[#f3c3b2]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#cfd6c4]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block gradient-cool px-8 py-3 rounded-button text-white font-Montserrat font-medium whitespace-nowrap hover:opacity-90 transition">View All Her Accessories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- His Collection -->
+    <section id="him" class="py-20 bg-gradient-to-r from-[#fde8d3] to-[#f3c3b2] bg-opacity-10">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="font-Montserrat text-4xl font-bold text-gray-800 mb-4">His Collection</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Refined accessories crafted for the modern man, blending timeless style with contemporary design.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20mens%20chronograph%20watch%20with%20a%20stainless%20steel%20case%20and%20black%20leather%20strap%2C%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=13&orientation=squarish" alt="Men's Watch" class="w-full h-64 object-cover object-top transition duration-500">
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-line text-gray-700"></i>
+                            </div>
+                        </div>
+                        <div class="product-info absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition duration-300">
+                            <a href="#" class="bg-white text-gray-800 px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition">Quick View</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-Montserrat text-lg font-medium text-gray-800">Precision Chronograph</h3>
+                        <p class="text-gray-600 text-sm mb-2">Swiss movement, sapphire crystal</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-900">$579.00</span>
+                            <div class="flex gap-1">
+                                <span class="w-4 h-4 rounded-full bg-[#c57166]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#cfd6c4]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20mens%20leather%20wallet%20in%20dark%20brown%20color%2C%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=14&orientation=squarish" alt="Leather Wallet" class="w-full h-64 object-cover object-top transition duration-500">
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-line text-gray-700"></i>
+                            </div>
+                        </div>
+                        <div class="product-info absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition duration-300">
+                            <a href="#" class="bg-white text-gray-800 px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition">Quick View</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-Montserrat text-lg font-medium text-gray-800">Heritage Bifold Wallet</h3>
+                        <p class="text-gray-600 text-sm mb-2">Full-grain leather, hand-stitched</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-900">$145.00</span>
+                            <div class="flex gap-1">
+                                <span class="w-4 h-4 rounded-full bg-[#c57166]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#cfd6c4]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20mens%20leather%20belt%20with%20a%20brushed%20metal%20buckle%2C%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=15&orientation=squarish" alt="Leather Belt" class="w-full h-64 object-cover object-top transition duration-500">
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-line text-gray-700"></i>
+                            </div>
+                        </div>
+                        <div class="product-info absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition duration-300">
+                            <a href="#" class="bg-white text-gray-800 px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition">Quick View</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-Montserrat text-lg font-medium text-gray-800">Classic Leather Belt</h3>
+                        <p class="text-gray-600 text-sm mb-2">Italian leather, brushed buckle</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-900">$125.00</span>
+                            <div class="flex gap-1">
+                                <span class="w-4 h-4 rounded-full bg-[#c57166]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#cfd6c4]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20mens%20aviator%20sunglasses%20with%20polarized%20lenses%2C%20on%20a%20minimalist%20surface%2C%20soft%20lighting%2C%20high-end%20photography%2C%20showing%20craftsmanship%20details%2C%20on%20neutral%20background%2C%20photorealistic%2C%20high-resolution%20product%20photography&width=500&height=500&seq=16&orientation=squarish" alt="Aviator Sunglasses" class="w-full h-64 object-cover object-top transition duration-500">
+                        <div class="absolute top-3 right-3 bg-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-heart-line text-gray-700"></i>
+                            </div>
+                        </div>
+                        <div class="product-info absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 transition duration-300">
+                            <a href="#" class="bg-white text-gray-800 px-4 py-2 rounded-button text-sm font-medium whitespace-nowrap hover:bg-gray-100 transition">Quick View</a>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-Montserrat text-lg font-medium text-gray-800">Aviator Elite Sunglasses</h3>
+                        <p class="text-gray-600 text-sm mb-2">Polarized lenses, titanium frame</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-gray-900">$219.00</span>
+                            <div class="flex gap-1">
+                                <span class="w-4 h-4 rounded-full bg-[#c57166]"></span>
+                                <span class="w-4 h-4 rounded-full bg-[#cfd6c4]"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block gradient-warm px-8 py-3 rounded-button text-white font-Montserrat font-medium whitespace-nowrap hover:opacity-90 transition">View All His Accessories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dimensional Portals -->
+    <section id="portals" class="py-20 bg-gradient-to-b from-white to-background/20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Dimensional Portals</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Traverse through our tri-dimensional gateways to discover accessories that resonate with your essence.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Portal 1 -->
+                <div class="portal bg-white rounded-lg overflow-hidden shadow-lg stardust">
+                    <div class="h-64 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=ethereal%20feminine%20luxury%20accessories%20with%20goddess%20aesthetic%2C%20soft%20lighting%2C%20pearl%20and%20crystal%20elements%2C%20flowing%20fabrics%2C%20delicate%20jewelry%20pieces%2C%20rose%20gold%20and%20silver%20tones%2C%20celestial%20elements%2C%20dreamy%20atmosphere%2C%20high-end%20fashion%20photography%20style%2C%20luxury%20product%20photography&width=600&height=400&seq=portal1&orientation=landscape'); background-size: cover; background-position: center;"></div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">GODDESS REALM</h3>
+                        <p class="text-gray-600 mb-4">Delicate adornments channeling divine feminine energy through celestial crystals and flowing forms.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium">
+                            Enter Portal
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portal 2 -->
+                <div class="portal bg-white rounded-lg overflow-hidden shadow-lg stardust">
+                    <div class="h-64 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=bold%20masculine%20luxury%20accessories%20with%20titan%20aesthetic%2C%20strong%20lighting%2C%20leather%20and%20metal%20elements%2C%20structured%20designs%2C%20chunky%20watch%20and%20cufflinks%2C%20dark%20silver%20and%20gunmetal%20tones%2C%20geometric%20patterns%2C%20powerful%20atmosphere%2C%20high-end%20fashion%20photography%20style%2C%20luxury%20product%20photography&width=600&height=400&seq=portal2&orientation=landscape'); background-size: cover; background-position: center;"></div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">TITAN SANCTUARY</h3>
+                        <p class="text-gray-600 mb-4">Bold statements embodying masculine strength through architectural forms and elemental materials.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium">
+                            Enter Portal
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Portal 3 -->
+                <div class="portal bg-white rounded-lg overflow-hidden shadow-lg stardust">
+                    <div class="h-64 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=gender-fluid%20luxury%20accessories%20with%20universal%20harmony%20aesthetic%2C%20balanced%20lighting%2C%20mixed%20materials%20with%20both%20soft%20and%20structured%20elements%2C%20versatile%20jewelry%20pieces%2C%20mixed%20metal%20tones%2C%20flowing%20and%20geometric%20patterns%20combined%2C%20balanced%20atmosphere%2C%20high-end%20fashion%20photography%20style%2C%20luxury%20product%20photography&width=600&height=400&seq=portal3&orientation=landscape'); background-size: cover; background-position: center;"></div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">UNIVERSAL HARMONY</h3>
+                        <p class="text-gray-600 mb-4">Transcendent pieces blending masculine and feminine energies for those who exist beyond binary expression.</p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium">
+                            Enter Portal
+                            <div class="w-5 h-5 flex items-center justify-center ml-2">
+                                <i class="ri-arrow-right-line"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discover Your Constellation -->
+    <section class="py-20 bg-gradient-to-b from-[#fde8d3] to-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="galactic-dreams text-4xl md:text-5xl font-bold text-gray-800 mb-4">Discover Your Constellation</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore our celestial collections, each piece crafted to enhance your unique beauty and style journey.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="category-card rounded-lg shadow-md overflow-hidden aspect-square">
+                    <a href="#" class="block h-full w-full relative group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                        <div style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20necklace%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=2&orientation=squarish'); background-size: cover; background-position: center;" class="h-full w-full"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+                            <h3 class="text-white text-xl font-medium galactic-dreams">Necklaces</h3>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="category-card rounded-lg shadow-md overflow-hidden aspect-square">
+                    <a href="#" class="block h-full w-full relative group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                        <div style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20bracelet%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=3&orientation=squarish'); background-size: cover; background-position: center;" class="h-full w-full"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+                            <h3 class="text-white text-xl font-medium galactic-dreams">Bracelets</h3>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="category-card rounded-lg shadow-md overflow-hidden aspect-square">
+                    <a href="#" class="block h-full w-full relative group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                        <div style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20ring%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=4&orientation=squarish'); background-size: cover; background-position: center;" class="h-full w-full"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+                            <h3 class="text-white text-xl font-medium galactic-dreams">Rings</h3>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="category-card rounded-lg shadow-md overflow-hidden aspect-square">
+                    <a href="#" class="block h-full w-full relative group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                        <div style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20earrings%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=5&orientation=squarish'); background-size: cover; background-position: center;" class="h-full w-full"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+                            <h3 class="text-white text-xl font-medium galactic-dreams">Earrings</h3>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="category-card rounded-lg shadow-md overflow-hidden aspect-square">
+                    <a href="#" class="block h-full w-full relative group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                        <div style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20watch%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=6&orientation=squarish'); background-size: cover; background-position: center;" class="h-full w-full"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+                            <h3 class="text-white text-xl font-medium galactic-dreams">Watches</h3>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="category-card rounded-lg shadow-md overflow-hidden aspect-square">
+                    <a href="#" class="block h-full w-full relative group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
+                        <div style="background-image: url('https://readdy.ai/api/search-image?query=elegant%20hair%20accessories%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=7&orientation=squarish'); background-size: cover; background-position: center;" class="h-full w-full"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 text-center">
+                            <h3 class="text-white text-xl font-medium galactic-dreams">Hair Accessories</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Collection -->
+    <section id="collection" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Quantum Collection</h2>
+                    <p class="text-lg text-gray-600 max-w-xl">Accessories that transcend time and dimension, each piece vibrating with cosmic energy.</p>
+                </div>
+                
+                <div class="mt-6 md:mt-0">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-700">Filter by Energy</span>
+                        <div class="relative">
+                            <button id="filterBtn" class="flex items-center space-x-2 bg-background/30 px-4 py-2 rounded-button whitespace-nowrap">
+                                <span>All Energies</span>
+                                <div class="w-4 h-4 flex items-center justify-center">
+                                    <i class="ri-arrow-down-s-line"></i>
+                                </div>
+                            </button>
+                            <div id="filterDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                                <div class="py-1">
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-primary/10">All Energies</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-primary/10">Feminine</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-primary/10">Masculine</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-primary/10">Non-Binary</a>
+                                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-primary/10">Cosmic</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="diamond-cell bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20crystal%20pendant%20necklace%20with%20cosmic%20design%2C%20floating%20in%20space%2C%20ethereal%20lighting%2C%20premium%20jewelry%20photography%2C%20detailed%20craftsmanship%2C%20celestial%20inspired%20jewelry%2C%20high-end%20product%20photography%20against%20dark%20background&width=500&height=600&seq=prod1&orientation=portrait" alt="Celestial Crystal Pendant" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full cursor-pointer">
+                            <i class="ri-heart-line text-gray-700 hover:text-emphasis transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2">Celestial Crystal Pendant</h3>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-emphasis font-medium">$189.00</span>
+                            <div class="flex space-x-1">
+                                <span class="w-4 h-4 rounded-full bg-primary"></span>
+                                <span class="w-4 h-4 rounded-full bg-highlight"></span>
+                                <span class="w-4 h-4 rounded-full bg-accent"></span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Add to Dimension</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="diamond-cell bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20leather%20and%20metal%20bracelet%20with%20geometric%20design%2C%20masculine%20aesthetic%2C%20premium%20materials%2C%20detailed%20craftsmanship%2C%20high-end%20product%20photography%20against%20dark%20background%2C%20floating%20in%20space%20with%20ethereal%20lighting&width=500&height=600&seq=prod2&orientation=portrait" alt="Quantum Leather Bracelet" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full cursor-pointer">
+                            <i class="ri-heart-line text-gray-700 hover:text-emphasis transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2">Quantum Leather Bracelet</h3>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-emphasis font-medium">$145.00</span>
+                            <div class="flex space-x-1">
+                                <span class="w-4 h-4 rounded-full bg-gray-800"></span>
+                                <span class="w-4 h-4 rounded-full bg-emphasis"></span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Add to Dimension</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="diamond-cell bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20unisex%20watch%20with%20cosmic%20design%2C%20floating%20in%20space%2C%20ethereal%20lighting%2C%20premium%20timepiece%20photography%2C%20detailed%20craftsmanship%2C%20celestial%20inspired%20watch%20face%2C%20high-end%20product%20photography%20against%20dark%20background&width=500&height=600&seq=prod3&orientation=portrait" alt="Nebula Timekeeper Watch" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full cursor-pointer">
+                            <i class="ri-heart-line text-gray-700 hover:text-emphasis transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2">Nebula Timekeeper Watch</h3>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-emphasis font-medium">$295.00</span>
+                            <div class="flex space-x-1">
+                                <span class="w-4 h-4 rounded-full bg-primary"></span>
+                                <span class="w-4 h-4 rounded-full bg-gray-800"></span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Add to Dimension</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="diamond-cell bg-white rounded-lg overflow-hidden shadow-md">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20gender-fluid%20earrings%20with%20flowing%20and%20geometric%20design%2C%20mixed%20metals%2C%20premium%20jewelry%20photography%2C%20detailed%20craftsmanship%2C%20celestial%20inspired%20jewelry%2C%20high-end%20product%20photography%20against%20dark%20background%2C%20floating%20in%20space%20with%20ethereal%20lighting&width=500&height=600&seq=prod4&orientation=portrait" alt="Harmonic Flow Earrings" class="w-full h-full object-cover object-top">
+                        <div class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full cursor-pointer">
+                            <i class="ri-heart-line text-gray-700 hover:text-emphasis transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold mb-2">Harmonic Flow Earrings</h3>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-emphasis font-medium">$165.00</span>
+                            <div class="flex space-x-1">
+                                <span class="w-4 h-4 rounded-full bg-primary"></span>
+                                <span class="w-4 h-4 rounded-full bg-highlight"></span>
+                                <span class="w-4 h-4 rounded-full bg-emphasis"></span>
+                            </div>
+                        </div>
+                        <button class="w-full bg-primary text-white py-2 rounded-button hover:bg-primary/90 transition-colors whitespace-nowrap">Add to Dimension</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center border-2 border-primary text-primary px-8 py-3 rounded-button font-medium hover:bg-primary/5 transition-all whitespace-nowrap">
+                    Explore Full Collection
+                    <div class="w-5 h-5 flex items-center justify-center ml-2">
+                        <i class="ri-arrow-right-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celestial Treasures -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="galactic-dreams text-4xl md:text-5xl font-bold text-gray-800 mb-4">Celestial Treasures</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Each piece tells a story, carefully crafted to capture the essence of ethereal beauty.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="product-card rounded-lg shadow-md overflow-hidden">
+                    <div class="relative group">
+                        <div class="aspect-square overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=elegant%20gold%20necklace%20with%20celestial%20moon%20pendant%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=8&orientation=squarish" alt="Celestial Moon Necklace" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="absolute top-3 right-3 flex flex-col gap-2">
+                            <button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors duration-300">
+                                <i class="ri-heart-line ri-lg"></i>
+                            </button>
+                            <button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors duration-300">
+                                <i class="ri-eye-line ri-lg"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <div class="flex justify-center space-x-2">
+                                <button class="bg-primary hover:bg-opacity-90 text-white py-2 px-4 rounded-button text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-secondary hover:bg-opacity-90 text-white py-2 px-4 rounded-button text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                                    Try On AR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium text-gray-800">Celestial Moon Necklace</h3>
+                        <p class="text-gray-600 mb-2">14k Gold with Moonstone</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-medium">$189.00</span>
+                            <div class="flex items-center">
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-half-fill text-[#fde8d3]"></i>
+                                <span class="text-sm text-gray-500 ml-1">(42)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card rounded-lg shadow-md overflow-hidden">
+                    <div class="relative group">
+                        <div class="aspect-square overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=elegant%20rose%20gold%20bracelet%20with%20small%20star%20charms%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=9&orientation=squarish" alt="Stardust Bracelet" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="absolute top-3 right-3 flex flex-col gap-2">
+                            <button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors duration-300">
+                                <i class="ri-heart-line ri-lg"></i>
+                            </button>
+                            <button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors duration-300">
+                                <i class="ri-eye-line ri-lg"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <div class="flex justify-center space-x-2">
+                                <button class="bg-primary hover:bg-opacity-90 text-white py-2 px-4 rounded-button text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-secondary hover:bg-opacity-90 text-white py-2 px-4 rounded-button text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                                    Try On AR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium text-gray-800">Stardust Bracelet</h3>
+                        <p class="text-gray-600 mb-2">Rose Gold with Star Charms</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-medium">$145.00</span>
+                            <div class="flex items-center">
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <span class="text-sm text-gray-500 ml-1">(37)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card rounded-lg shadow-md overflow-hidden">
+                    <div class="relative group">
+                        <div class="aspect-square overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=elegant%20silver%20ring%20with%20blue%20gemstone%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=10&orientation=squarish" alt="Ethereal Sapphire Ring" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="absolute top-3 right-3 flex flex-col gap-2">
+                            <button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors duration-300">
+                                <i class="ri-heart-line ri-lg"></i>
+                            </button>
+                            <button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors duration-300">
+                                <i class="ri-eye-line ri-lg"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <div class="flex justify-center space-x-2">
+                                <button class="bg-primary hover:bg-opacity-90 text-white py-2 px-4 rounded-button text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-secondary hover:bg-opacity-90 text-white py-2 px-4 rounded-button text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                                    Try On AR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium text-gray-800">Ethereal Sapphire Ring</h3>
+                        <p class="text-gray-600 mb-2">Sterling Silver with Sapphire</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-medium">$215.00</span>
+                            <div class="flex items-center">
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-line text-[#fde8d3]"></i>
+                                <span class="text-sm text-gray-500 ml-1">(29)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card rounded-lg shadow-md overflow-hidden">
+                    <div class="relative group">
+                        <div class="aspect-square overflow-hidden">
+                            <img src="https://readdy.ai/api/search-image?query=elegant%20pearl%20earrings%20on%20a%20soft%20pastel%20background%2C%20professional%20jewelry%20photography%2C%20high-end%20luxury%20product%2C%20soft%20lighting%2C%20minimalist%20composition%2C%20ethereal%20mood%2C%20dreamy%20atmosphere&width=600&height=600&seq=11&orientation=squarish" alt="Celestial Pearl Earrings" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110">
+                        </div>
+                        <div class="absolute top-3 right-3 flex flex-col gap-2">
+                            <button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors duration-300">
+                                <i class="ri-heart-line ri-lg"></i>
+                            </button>
+                            <button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-gray-700 hover:text-primary transition-colors duration-300">
+                                <i class="ri-eye-line ri-lg"></i>
+                            </button>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-90 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                            <div class="flex justify-center space-x-2">
+                                <button class="bg-primary hover:bg-opacity-90 text-white py-2 px-4 rounded-button text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                                    Add to Cart
+                                </button>
+                                <button class="bg-secondary hover:bg-opacity-90 text-white py-2 px-4 rounded-button text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                                    Try On AR
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium text-gray-800">Celestial Pearl Earrings</h3>
+                        <p class="text-gray-600 mb-2">14k Gold with Freshwater Pearls</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-primary font-medium">$165.00</span>
+                            <div class="flex items-center">
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-fill text-[#fde8d3]"></i>
+                                <i class="ri-star-half-fill text-[#fde8d3]"></i>
+                                <span class="text-sm text-gray-500 ml-1">(51)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white py-3 px-8 rounded-button text-lg font-medium transition-all duration-300 whitespace-nowrap">
+                    View All Treasures
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Feed -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold">Follow Our Style</h2>
+                <a href="https://www.instagram.com/mahmud_designs/?hl=en" class="text-primary flex items-center group">
+                    <span class="mr-2">@éclat_fashion</span>
+                    <div class="w-5 h-5 flex items-center justify-center">
+                        <i class="ri-instagram-line"></i>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20woman%20in%20fashionable%20outfit%2C%20fashion%20photography%20with%20soft%20natural%20lighting%2C%20urban%20setting%2C%20instagram%20style%2C%20candid%20fashion%20moment&width=300&height=300&seq=insta1&orientation=squarish" alt="Instagram Post" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="ri-instagram-line ri-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20fashion%20accessories%20arrangement%2C%20fashion%20photography%20with%20soft%20natural%20lighting%2C%20luxury%20jewelry%20and%20handbag%2C%20instagram%20style%2C%20product%20flatlay&width=300&height=300&seq=insta2&orientation=squarish" alt="Instagram Post" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="ri-instagram-line ri-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20woman%20in%20summer%20dress%20at%20cafe%2C%20fashion%20photography%20with%20soft%20natural%20lighting%2C%20lifestyle%20fashion%20moment%2C%20instagram%20style%2C%20candid%20fashion&width=300&height=300&seq=insta3&orientation=squarish" alt="Instagram Post" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="ri-instagram-line ri-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20fashion%20detail%20shot%20of%20fabric%20texture%2C%20fashion%20photography%20with%20soft%20natural%20lighting%2C%20close-up%20of%20high-quality%20material%2C%20instagram%20style%2C%20artistic%20fashion%20detail&width=300&height=300&seq=insta4&orientation=squarish" alt="Instagram Post" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="ri-instagram-line ri-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20woman%20trying%20on%20shoes%20in%20boutique%2C%20fashion%20photography%20with%20soft%20natural%20lighting%2C%20shopping%20moment%2C%20instagram%20style%2C%20candid%20fashion&width=300&height=300&seq=insta5&orientation=squarish" alt="Instagram Post" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="ri-instagram-line ri-xl"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-lg">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20fashion%20runway%20moment%2C%20fashion%20photography%20with%20dramatic%20lighting%2C%20model%20walking%20on%20catwalk%2C%20instagram%20style%2C%20high%20fashion%20moment&width=300&height=300&seq=insta6&orientation=squarish" alt="Instagram Post" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                        <div class="w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="ri-instagram-line ri-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Footer -->
+<footer class="footer-section pt-16 pb-8">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="index.html"</a>
+<img src="images/fs-logo.png" alt="Fashion Store" class="h-10 w-auto" onerror="this.style.display='none'; this.insertAdjacentHTML('afterend', '<span class=\'text-3xl font-[Pacifico] text-primary\'>Fashion Store</span>');" />
+<p class="text-gray-700 mb-6">Elevating women's fashion with timeless elegance and contemporary designs.</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-700 hover:text-primary transition-colors">
+<i class="ri-facebook-fill"></i>
+</a>
+<a href="https://www.instagram.com/mahmud_designs/?hl=en" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-700 hover:text-primary transition-colors">
+<i class="ri-instagram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-700 hover:text-primary transition-colors">
+<i class="ri-pinterest-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-700 hover:text-primary transition-colors">
+<i class="ri-twitter-x-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Shop</h3>
+<ul class="space-y-4">
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">New Arrivals</a></li>
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">Best Sellers</a></li>
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">Sale</a></li>
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">Collections</a></li>
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">Accessories</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Company</h3>
+<ul class="space-y-4">
+<li><a href="index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a></li>
+<li><a href="men.html" class="text-gray-700 hover:text-primary transition-colors">Men</a></li>
+<li><a href="women.html" class="text-gray-700 hover:text-primary transition-colors">Women</a></li>
+<li><a href="accessories.html" class="text-gray-700 hover:text-primary transition-colors">Accessories</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-6">Customer Service</h3>
+<ul class="space-y-4">
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">FAQ</a></li>
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">Shipping & Returns</a></li>
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">Store Locator</a></li>
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">Size Guide</a></li>
+<li><a href="#" class="text-gray-700 hover:text-primary transition-colors">Gift Cards</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-gray-200 pt-8">
+<div class="flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-600 text-sm mb-4 md:mb-0">&copy; 2025 Fashion Store. All rights reserved.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="#" class="text-gray-600 text-sm hover:text-primary transition-colors">Privacy Policy</a>
+<a href="#" class="text-gray-600 text-sm hover:text-primary transition-colors">Terms of Service</a>
+<a href="#" class="text-gray-600 text-sm hover:text-primary transition-colors">Cookies Settings</a>
+</div>
+<div class="flex items-center mt-4 md:mt-0">
+<div class="flex space-x-2">
+<div class="w-8 h-5 flex items-center justify-center">
+<i class="ri-visa-fill text-gray-700"></i>
+</div>
+<div class="w-8 h-5 flex items-center justify-center">
+<i class="ri-mastercard-fill text-gray-700"></i>
+</div>
+<div class="w-8 h-5 flex items-center justify-center">
+<i class="ri-paypal-fill text-gray-700"></i>
+</div>
+<div class="w-8 h-5 flex items-center justify-center">
+<i class="ri-apple-fill text-gray-700"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+    <script id="filterDropdownScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtn = document.getElementById('filterBtn');
+            const filterDropdown = document.getElementById('filterDropdown');
+            
+            filterBtn.addEventListener('click', function() {
+                filterDropdown.classList.toggle('hidden');
+            });
+            
+            document.addEventListener('click', function(event) {
+                if (!filterBtn.contains(event.target) && !filterDropdown.contains(event.target)) {
+                    filterDropdown.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+    <script id="customFormControlsScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom radio buttons
+            const radioLabels = document.querySelectorAll('.radio-label');
+            radioLabels.forEach(label => {
+                label.addEventListener('click', function() {
+                    const radio = document.getElementById(this.getAttribute('for'));
+                    radio.checked = true;
+                });
+            });
+            
+            // Custom checkboxes
+            const checkboxLabels = document.querySelectorAll('.checkbox-label');
+            checkboxLabels.forEach(label => {
+                label.addEventListener('click', function() {
+                    const checkbox = document.getElementById(this.getAttribute('for'));
+                    checkbox.checked = !checkbox.checked;
+                });
+            });
+        });
+    </script>
+
+    <script id="animationEffectsScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Liquid text animation
+            const liquidTexts = document.querySelectorAll('.liquid-text');
+            
+            // Floating elements animation
+            const diamondCells = document.querySelectorAll('.diamond-cell');
+            diamondCells.forEach((cell, index) => {
+                cell.style.animationDelay = `${index * 0.2}s`;
+                cell.classList.add('floating');
+            });
+        });
+    </script>
+</body>
+</html>
