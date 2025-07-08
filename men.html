@@ -132,6 +132,142 @@
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
+        .card-wrapper {
+      position: relative;
+      width: var(--width);
+      height: var(--height);
+    }
+
+    .slider {
+      width: 100%;
+      height: var(--height);
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, #000 10% 90%, transparent);
+    }
+
+    .slider .list {
+      display: flex;
+      width: 100%;
+      min-width: calc(var(--width) * var(--quantity));
+      position: relative;
+    }
+
+    .slider .list .item {
+      width: var(--width);
+      height: var(--height);
+      position: absolute;
+      left: 100%;
+      animation: autoRun 10s linear infinite;
+      animation-delay: calc((10s / var(--quantity)) * (var(--position) - 1) - 10s) !important;
+      transition: filter 0.5s;
+    }
+
+    .slider:hover .item {
+      animation-play-state: paused !important;
+      filter: grayscale(1);
+    }
+
+    .slider .item:hover {
+      filter: grayscale(0);
+    }
+
+    .slider[reverse="true"] .item {
+      animation: reversePlay 10s linear infinite;
+    }
+
+    @keyframes autoRun {
+      from { left: 100%; }
+      to { left: calc(var(--width) * -1); }
+    }
+
+    @keyframes reversePlay {
+      from { left: calc(var(--width) * -1); }
+      to { left: 100%; }
+    }
+
+    .card-wrapper {
+      position: relative;
+      width: var(--width);
+      height: var(--height);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card-info {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .card-wrapper:hover .card-info {
+      opacity: 1;
+    }
+
+    .plusButton {
+      --plus_sideLength: 2.5rem;
+      --plus_topRightTriangleSideLength: 0.9rem;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid white;
+      width: var(--plus_sideLength);
+      height: var(--plus_sideLength);
+      background-color: #000000;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .plusButton::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
+      border-style: solid;
+      border-color: transparent white transparent transparent;
+      transition: 0.2s ease-in-out;
+    }
+
+    .plusButton:hover {
+      cursor: pointer;
+    }
+
+    .plusButton:hover::before,
+    .plusButton:focus-visible::before {
+      --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+    }
+
+    .plusButton>.plusIcon {
+      fill: white;
+      width: calc(var(--plus_sideLength) * 0.7);
+      height: calc(var(--plus_sideLength) * 0.7);
+      z-index: 1;
+      transition: 0.2s ease-in-out;
+    }
+
+    .plusButton:hover>.plusIcon,
+    .plusButton:focus-visible>.plusIcon {
+      fill: black;
+      transform: rotate(180deg);
+    }
     </style>
 </head>
 <body class="bg-white">
@@ -497,30 +633,75 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Shop by Look</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative h-[500px] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=stylish%20male%20model%20wearing%20business%20casual%20outfit%20with%20blazer%20and%20chinos%2C%20elegant%20menswear%20styling%20for%20office%2C%20clean%20background%20with%20professional%20lighting%2C%20high-end%20fashion%20photography%20showcasing%20complete%20look&width=700&height=900&seq=14&orientation=portrait" alt="Business Casual" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">Business Casual</h3>
-                            <p class="text-white/90 mb-4">Effortlessly transition from office to evening with these versatile pieces.</p>
-                            <button class="bg-white text-gray-900 px-6 py-2 !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-colors">Shop This Look</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div class="relative h-[500px] overflow-hidden">
-                        <img src="https://readdy.ai/api/search-image?query=stylish%20male%20model%20wearing%20weekend%20casual%20outfit%20with%20premium%20t-shirt%20and%20jeans%2C%20relaxed%20menswear%20styling%20for%20leisure%2C%20clean%20background%20with%20professional%20lighting%2C%20high-end%20fashion%20photography%20showcasing%20complete%20look&width=700&height=900&seq=15&orientation=portrait" alt="Weekend Ready" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                            <h3 class="text-2xl font-bold text-white mb-2">Weekend Ready</h3>
-                            <p class="text-white/90 mb-4">Casual yet refined pieces perfect for your weekend adventures.</p>
-                            <button class="bg-white text-gray-900 px-6 py-2 !rounded-button whitespace-nowrap hover:bg-primary hover:text-white transition-colors">Shop This Look</button>
-                        </div>
-                    </div>
-                </div>
+             <!-- Cloth Carousel -->
+  <div class="slider" reverse="true" style="--width: 200px; --height: 200px; --quantity: 4; margin-top: 2rem;">
+    <div class="list">
+      <div class="item" style="--position: 1">
+        <div class="card-wrapper">
+          <img src="images/cl1.webp" alt="Shirt 1" class="card-img" />
+          <div class="card-info">
+            <p><strong>Shirt</strong></p>
+            <p>Casual short-sleeve shirt</p>
+            <p>Ksh 1,500</p>
+            <div tabindex="0" class="plusButton">
+              <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                <path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z"></path>
+              </svg>
             </div>
+          </div>
         </div>
+      </div>
+
+      <div class="item" style="--position: 2">
+        <div class="card-wrapper">
+          <img src="images/cl2.webp" alt="Shirt 2" class="card-img" />
+          <div class="card-info">
+            <p><strong>Shirt</strong></p>
+            <p>Denim long-sleeve shirt</p>
+            <p>Ksh 1,800</p>
+            <div tabindex="0" class="plusButton">
+              <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                <path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" style="--position: 3">
+        <div class="card-wrapper">
+          <img src="images/cl3.webp" alt="Shirt 3" class="card-img" />
+          <div class="card-info">
+            <p><strong>Shirt</strong></p>
+            <p>Formal cotton shirt</p>
+            <p>Ksh 2,000</p>
+            <div tabindex="0" class="plusButton">
+              <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                <path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="item" style="--position: 4">
+        <div class="card-wrapper">
+          <img src="images/cl4.webp" alt="Shirt 4" class="card-img" />
+          <div class="card-info">
+            <p><strong>Shirt</strong></p>
+            <p>Flannel checked shirt</p>
+            <p>Ksh 1,700</p>
+            <div tabindex="0" class="plusButton">
+              <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                <path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
     </section>
 
     <!-- Testimonials Section -->
